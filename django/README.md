@@ -1,4 +1,4 @@
-# django-users
+# django-simple-custom-users
 Pluggable custom user module for Django
 
 This custom user model requires an email, password, and date-of-birth to create an account.
