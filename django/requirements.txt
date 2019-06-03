@@ -1,2 +1,0 @@
-Django==2.2.1
-setuptools==41.0.1 # for those who might want to build this themselves
