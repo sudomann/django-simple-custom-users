@@ -23,3 +23,6 @@ Quick start
 2. Run `python manage.py migrate` to create the polls models.
 
 And you are ready to use as you please!
+
+
+NOTE: Build with `python setup.py sdist`
