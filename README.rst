@@ -20,7 +20,9 @@ Quick start
         'users',
     ]
 
-2. Run `python manage.py migrate` to create the polls models.
+2. Add `AUTH_USER_MODEL = 'users.CustomUser'` to your `settings.py`
+
+3. Run `python manage.py migrate` to create the user model.
 
 And you are ready to use as you please!
 
