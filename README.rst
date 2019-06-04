@@ -17,7 +17,7 @@ Quick start
 
     INSTALLED_APPS = [
         ...
-        'django-simple-custom-users',
+        'users',
     ]
 
 2. Run `python manage.py migrate` to create the polls models.
