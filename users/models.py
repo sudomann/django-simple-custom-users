@@ -18,7 +18,7 @@ class CustomUser(AbstractUser):
     # country = 
     agree_tos_and_privacy = models.BooleanField(default=False)
     last_modified = models.DateField(auto_now=True)
-    date_created = models.DateField(auto_now_add=True)
+    date_joined = models.DateField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
