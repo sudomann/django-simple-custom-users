@@ -17,7 +17,7 @@ setup(
           'django-phonenumber-field==3.0.1',
           'phonenumbers==8.10.13',
           'phonenumbers==8.10.13',
-          'pyuca==1.2',
+          'pyuca==1.2', # For more accurate sorting of translated country names
       ],
     license='Apache 2.0 License',
     description='A simple Django app to conduct Web-based polls.',

@@ -10,6 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
         fields = (
             'email',
             'full_name',
+            'country',
             'phone_number',
             'date_of_birth',
             'agree_TOS_and_privacy',
@@ -23,6 +24,7 @@ class CustomUserChangeForm(UserChangeForm):
         fields = (
             'email',
             'full_name',
+            'country',
             'phone_number',
             'date_of_birth',
         )

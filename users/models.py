@@ -5,6 +5,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
+from django_countries.fields import CountryField
 from .managers import CustomUserManager
 
 
@@ -14,7 +15,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(max_length=250)
     phone_number = PhoneNumberField(blank=True)
     date_of_birth = models.DateField()
-    # country = 
+    country = CountryField()
     agree_TOS_and_privacy = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -24,6 +25,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
         'full_name',
+        'country',
         'phone_number',
         'date_of_birth',
         'agree_TOS_and_privacy',
