@@ -12,6 +12,10 @@ setup(
     version='0.0.1',
     packages=find_packages(),
     include_package_data=True,
+    install_requires=[
+          'django-phonenumber-field==3.0.1',
+          'phonenumbers==8.10.13',
+      ],
     license='Apache 2.0 License',
     description='A simple Django app to conduct Web-based polls.',
     long_description=README,
