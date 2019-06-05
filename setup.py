@@ -13,7 +13,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-          'Django==2.2.1',
           'django-countries==5.3.3',
           'django-phonenumber-field==3.0.1',
           'phonenumbers==8.10.13',
