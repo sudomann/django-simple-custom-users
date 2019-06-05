@@ -15,7 +15,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone_number = PhoneNumberField(blank=True)
     date_of_birth = models.DateField()
     # country = 
-    agree_tos_and_privacy = models.BooleanField(default=False)
+    agree_TOS_and_privacy = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
