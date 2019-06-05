@@ -1,27 +1,33 @@
 import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.utils.translation import ugettext_lazy as _
-
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
-
 from .managers import CustomUserManager
 
 
-class CustomUser(AbstractUser):
-    username = None
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
-    full_name = models.CharField(max_length=200)
     email = models.EmailField(_('email address'), unique=True)
+    full_name = models.CharField(max_length=250)
     phone_number = PhoneNumberField(blank=True)
     date_of_birth = models.DateField()
     # country = 
     agree_tos_and_privacy = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(default=timezone.now)
     last_modified = models.DateField(auto_now=True)
-    date_joined = models.DateField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = [
+        'full_name',
+        'phone_number',
+        'date_of_birth',
+        'agree_TOS_and_privacy',
+    ]
 
     objects = CustomUserManager()
 
