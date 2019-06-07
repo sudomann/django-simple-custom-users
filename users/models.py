@@ -7,6 +7,7 @@ from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 from django_countries.fields import CountryField
 from .managers import CustomUserManager
+from .validators import validate_accepted
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -17,8 +18,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone_number_confirmed = models.BooleanField(default=False)
     date_of_birth = models.DateField()
     country = CountryField()
-    accepted_TOS = models.BooleanField()
-    accepted_privacy_policy = models.BooleanField()
+    accepted_TOS = models.BooleanField(validators=[validate_accepted])
+    accepted_privacy_policy = models.BooleanField(validators=[validate_accepted])
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
