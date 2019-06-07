@@ -14,9 +14,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     full_name = models.CharField(max_length=250)
     phone_number = PhoneNumberField(blank=True)
+    phone_number_confirmed = models.BooleanField(default=False)
     date_of_birth = models.DateField()
     country = CountryField()
-    agree_TOS_and_privacy = models.BooleanField()
+    accepted_TOS = models.BooleanField()
+    accepted_privacy_policy = models.BooleanField()
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -28,7 +30,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         'country',
         'phone_number',
         'date_of_birth',
-        'agree_TOS_and_privacy',
+        'accepted_TOS',
+        'accepted_privacy_policy',
     ]
 
     objects = CustomUserManager()
