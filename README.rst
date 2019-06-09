@@ -2,11 +2,20 @@
 Django Simple Custom Users
 =====
 
+**Note:** Compatible with Postgres Only
+
 django-simple-custom-users is a simple Pluggable custom user module for Django.
 
-It provides a custom user model which requires an email, password, and date-of-birth 
-to create an account.
-Username is disabled, and phone number is optional.
+It provides a custom user model with the following attributes:
+Required fields: 
+- email (case insensitive for comparison, to avoid spoofing)
+- password
+- date-of-birth
+- ...
+
+Optional Fields:
+- phone
+- ...
 
 More documentation will soon be available in the "docs" directory.
 
@@ -17,7 +26,7 @@ Quick start
 
     INSTALLED_APPS = [
         ...
-        'users',
+        'users', # the package name is simply 'users'
     ]
 
 2. Add `AUTH_USER_MODEL = 'users.CustomUser'` to your `settings.py`

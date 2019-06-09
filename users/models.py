@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.contrib.postgres.fields import CIEmailField
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
@@ -12,7 +13,7 @@ from .validators import validate_accepted
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
-    email = models.EmailField(_('email address'), unique=True)
+    email = CIEmailField(_('email address'), unique=True)
     full_name = models.CharField(max_length=250)
     phone_number = PhoneNumberField(blank=True)
     phone_number_confirmed = models.BooleanField(default=False)
