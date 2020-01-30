@@ -19,8 +19,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone_number_confirmed = models.BooleanField(default=False)
     date_of_birth = models.DateField()
     country = CountryField()
-    accepted_TOS = models.BooleanField(validators=[validate_accepted])
-    accepted_privacy_policy = models.BooleanField(validators=[validate_accepted])
+    accepted_terms_of_service = models.BooleanField(
+        validators=[validate_accepted])
+    accepted_privacy_policy = models.BooleanField(
+        validators=[validate_accepted])
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -32,7 +34,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         'country',
         'phone_number',
         'date_of_birth',
-        'accepted_TOS',
+        'accepted_terms_of_service',
         'accepted_privacy_policy',
     ]
 

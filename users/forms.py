@@ -13,7 +13,7 @@ class CustomUserCreationForm(UserCreationForm):
             'country',
             'phone_number',
             'date_of_birth',
-            'accepted_TOS',
+            'accepted_terms_of_service',
             'accepted_privacy_policy',
         )
 
