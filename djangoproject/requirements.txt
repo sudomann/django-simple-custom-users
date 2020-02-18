@@ -1,8 +1,1 @@
-# This must match `install_requires` argument in 
-# 'django-simple-custom-users' setup.py
-django-countries==5.3.3
-django-phonenumber-field==3.0.1
-phonenumbers==8.10.13
-phonenumbers==8.10.13
-psycopg2==2.8.4
-pyuca==1.2
+-e git+https://github.com/sudomann/django-simple-custom-users.git@6f19396d95ea41a0c1740330c6190b714212be52#egg=django_simple_custom_users
