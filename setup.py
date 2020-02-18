@@ -13,12 +13,11 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'django-countries==5.3.3',
-        'django-phonenumber-field==3.0.1',
-        'phonenumbers==8.10.13',
-        'phonenumbers==8.10.13',
-        'psycopg2==2.8.4',
-        'pyuca==1.2',  # For more accurate sorting of translated country names
+        'django-countries>=5.3.3,<6.0',
+        'django-phonenumber-field>=3.0.1,<4.0',
+        'phonenumbers>=8.10.13,<9.0',
+        'psycopg2>=2.8.4,<3.0',
+        'pyuca>=1.2,<2.0',  # Provides more accurate sorting of translated country names
     ],
     license='Apache 2.0 License',
     description='A simple Django app that provides a custom user model.',
