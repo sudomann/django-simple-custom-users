@@ -5,10 +5,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.postgres.fields import CIEmailField
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from phonenumber_field.modelfields import PhoneNumberField
-from django_countries.fields import CountryField
 from .managers import CustomUserManager
-from .validators import validate_accepted
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
