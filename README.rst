@@ -6,21 +6,6 @@ Django Simple Custom Users
 
 django-simple-custom-users is a simple pluggable custom user module for Django.
 
-It provides a custom user model with the following attributes:
-Required fields: 
-- email (case insensitive for comparison, to avoid spoofing)
-- password
-- date of birth
-- country
-- full name
-- accepted terms of service
-- accepted privacy policy
-
-Optional Fields:
-- phone
-
-More documentation will soon be available in the "docs" directory.
-
 Quick start
 -----------
 
