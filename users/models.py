@@ -45,6 +45,18 @@ class SecurityPolicy(BaseAgreement):
     pass
 
 
+def get_current_terms():
+    return TermsOfService.objects.get(is_current=True).id
+
+
+def get_current_security():
+    return SecurityPolicy.objects.get(is_current=True).id
+
+
+def get_current_privacy():
+    return PrivacyPolicy.objects.get(is_current=True).id
+
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     # this email field type is why this user model is
@@ -55,11 +67,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
     last_modified = models.DateField(auto_now=True)
     terms_of_service_version = models.ForeignKey(
-        TermsOfService, on_delete=models.PROTECT, null=True)
+        TermsOfService, on_delete=models.PROTECT)
     security_policy_version = models.ForeignKey(
-        SecurityPolicy, on_delete=models.PROTECT, null=True)
+        SecurityPolicy, on_delete=models.PROTECT)
     privacy_policy_version = models.ForeignKey(
-        PrivacyPolicy, on_delete=models.PROTECT, null=True)
+        PrivacyPolicy, on_delete=models.PROTECT)
 
     USERNAME_FIELD = 'email'
 
@@ -67,3 +79,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        self.terms_of_service_version = TermsOfService.objects.get(
+            is_current=True)
+        self.security_policy_version = SecurityPolicy.objects.get(
+            is_current=True)
+        self.privacy_policy_version = PrivacyPolicy.objects.get(
+            is_current=True)
+        super(CustomUser, self).save(*args, **kwargs)
