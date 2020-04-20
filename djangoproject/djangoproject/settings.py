@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'django_simple_custom_users',
         'USER': 'postgres',
         'HOST': '127.0.0.1',
-        'PORT': '60567',
+        'PORT': '5432',
     }
 }
 
