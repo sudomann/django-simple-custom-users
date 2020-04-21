@@ -62,6 +62,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # this email field type is why this user model is
     # only compatible with Postgres
     email = CIEmailField(_('email address'), unique=True)
+    full_name = models.CharField(max_length=150)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
