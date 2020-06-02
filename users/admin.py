@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .models import CustomUser, PrivacyPolicy, SecurityPolicy, TermsOfService
 
 
 class CustomUserAdmin(UserAdmin):
@@ -19,10 +19,29 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
-        ),
+         ),
     )
     search_fields = ('uuid', 'email',)
     ordering = ('email',)
 
 
+common_policy_fields = (
+    'is_current', 'document_identifier', 'note', 'date_created')
+
+
+class PrivacyPolicyAdmin(admin.ModelAdmin):
+    list_display = common_policy_fields
+
+
+class SecurityPolicyAdmin(admin.ModelAdmin):
+    list_display = common_policy_fields
+
+
+class TermsOfServiceAdmin(admin.ModelAdmin):
+    list_display = common_policy_fields
+
+
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(PrivacyPolicy, PrivacyPolicyAdmin)
+admin.site.register(SecurityPolicy, SecurityPolicyAdmin)
+admin.site.register(TermsOfService, TermsOfServiceAdmin)
