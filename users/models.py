@@ -9,11 +9,10 @@ from .managers import CustomUserManager
 
 
 class BaseAgreement(models.Model):
-    # revision date should be the document version identifier
-    effective_date = models.DateField(unique_for_date=True)
-
+    document_identifier = models.CharField(max_length=64, blank=True)
+    # for internal use only
+    note = models.CharField(max_length=256, blank=True)
     is_current = models.BooleanField()
-
     date_created = models.DateTimeField(auto_now_add=True)
 
     # A new record with `is_curent` flag set to `True`
@@ -45,18 +44,6 @@ class SecurityPolicy(BaseAgreement):
     pass
 
 
-def get_current_terms():
-    return TermsOfService.objects.get(is_current=True).id
-
-
-def get_current_security():
-    return SecurityPolicy.objects.get(is_current=True).id
-
-
-def get_current_privacy():
-    return PrivacyPolicy.objects.get(is_current=True).id
-
-
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     # this email field type is why this user model is
@@ -82,10 +69,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def save(self, *args, **kwargs):
-        self.terms_of_service_version = TermsOfService.objects.get(
-            is_current=True)
-        self.security_policy_version = SecurityPolicy.objects.get(
-            is_current=True)
-        self.privacy_policy_version = PrivacyPolicy.objects.get(
-            is_current=True)
+        defaults = {
+            'is_current': True,
+            'note': 'Auto-created due to absence of a single existing instance with is_current=True'
+        }
+
+        self.terms_of_service_version = TermsOfService.objects.get_or_create(
+            is_current=True, defaults=defaults)
+        self.security_policy_version = SecurityPolicy.objects.get_or_create(
+            is_current=True, is_current=True, defaults=defaults)
+        self.privacy_policy_version = PrivacyPolicy.objects.get_or_create(
+            is_current=True, is_current=True, defaults=defaults)
+
         super(CustomUser, self).save(*args, **kwargs)
