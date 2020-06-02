@@ -77,8 +77,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         self.terms_of_service_version = TermsOfService.objects.get_or_create(
             is_current=True, defaults=defaults)
         self.security_policy_version = SecurityPolicy.objects.get_or_create(
-            is_current=True, is_current=True, defaults=defaults)
+            is_current=True, defaults=defaults)
         self.privacy_policy_version = PrivacyPolicy.objects.get_or_create(
-            is_current=True, is_current=True, defaults=defaults)
+            is_current=True, defaults=defaults)
 
         super(CustomUser, self).save(*args, **kwargs)
