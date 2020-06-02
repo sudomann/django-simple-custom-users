@@ -12,7 +12,7 @@ class CustomUserAdmin(UserAdmin):
     list_display = ('uuid', 'email', 'is_staff', 'is_active',
         'terms_of_service_version'), 'security_policy_version', 'privacy_policy_version')
     list_filter=('uuid', 'email', 'is_staff', 'is_active',
-        'terms_of_service_version'), 'security_policy_version', 'privacy_policy_version')
+        'terms_of_service_version', 'security_policy_version', 'privacy_policy_version')
     fieldsets=(
         (None, {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
