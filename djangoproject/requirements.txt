@@ -1,4 +1,4 @@
 # this must match `install_requires` argument in
 # 'django-simple-custom-users' `setup.py`
 psycopg2==2.8.4
--e git+https://github.com/sudomann/django-simple-custom-users.git@6f19396d95ea41a0c1740330c6190b714212be52#egg=django_simple_custom_users
+-e git+https://github.com/sudomann/django-simple-custom-users.git@develop#egg=django_simple_custom_users
