@@ -52,6 +52,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(max_length=150)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_not_confirmed = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
     last_modified = models.DateField(auto_now=True)
     terms_of_service_version = models.ForeignKey(
