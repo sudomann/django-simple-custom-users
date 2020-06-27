@@ -12,7 +12,7 @@ setup(
     version='2.0.1',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=['psycopg2==2.8.4', ],
+    install_requires=['psycopg2==2.8.4', 'django-countries==6.1.2', 'django-phonenumber-field==3.0.1', 'phonenumbers==8.10.13'],
     license='Apache 2.0 License',
     description='A simple Django app that provides a custom user model.',
     long_description=README,
